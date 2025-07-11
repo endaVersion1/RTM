@@ -30,3 +30,9 @@ steps:
     python -m pip install --upgrade pip
     pip install -r requirements.txt
   displayName: 'Install dependencies'
+
+- script: |
+    echo "Deploying app to SandBox environment"
+    az login --service-principal -u $(AZURE_CLIENT_ID) -p $(AZURE_CLIENT_SECRET) --tenant $(AZURE_TENANT_ID)
+    az webapp up --name <app-name> --resource-group <resource-group> --runtime "PYTHON|3.8"
+  displayName: 'Deploy to SandBox environment'
