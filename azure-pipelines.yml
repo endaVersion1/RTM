@@ -1,38 +1,46 @@
-# Python package
-# Create and test a Python package on multiple Python versions.
-# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
 trigger:
-- master
+  - main  # or your preferred branch
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
-strategy:
-  matrix:
-    Python38:
-      python.version: '3.8'
-    Python39:
-      python.version: '3.9'
-    Python310:
-      python.version: '3.10'
-    Python311:
-      python.version: '3.11'
+variables:
+  pythonVersion: '3.10'
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(pythonVersion)'
+      addToPath: true
 
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+    displayName: 'Install Python Dependencies'
 
-- script: |
-    echo "Deploying app to SandBox environment"
-    az login --service-principal -u $(AZURE_CLIENT_ID) -p $(AZURE_CLIENT_SECRET) --tenant $(AZURE_TENANT_ID)
-    az webapp up --name <app-name> --resource-group <resource-group> --runtime "PYTHON|3.8"
-  displayName: 'Deploy to SandBox environment'
+  - script: |
+      echo "Packaging application files"
+      mkdir -p $(Build.ArtifactStagingDirectory)/app
+      cp app.py requirements.txt startup.txt $(Build.ArtifactStagingDirectory)/app
+    displayName: 'Copy App Files'
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/app'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/streamlit-app.zip'
+      replaceExistingArchive: true
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/streamlit-app.zip'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
+
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: '<Your Azure Connection>'      # Replace with your service connection
+      appName: '<Your App Service Name>'                # Replace with your web app name
+      package: '$(Build.ArtifactStagingDirectory)/streamlit-app.zip'
+      runtimeStack: 'PYTHON|3.10'
