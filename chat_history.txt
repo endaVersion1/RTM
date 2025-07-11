@@ -1,0 +1,84 @@
+want an app that generates a requirement traceability matrix documnet. This app should take Jira and Test rails excel sheets and the aplity to pull from Apis. The documnet RTM should have the coulumns Jira ID, Jira Summary, Test Case IDs, Test Case Titles, Test Case Status , Sprint,Jira Status Jira Updated, Description, Acceptance Criteria, Jira Link, Test Case Links, the links to Jira should be https://digitalhubjira.atlassian.net/issues/{JiraId} Test rail Id https://dotdigitalhub.testrail.io/index.php?/tests/view/{TestCaseId}
+
+1web app 2. Excel with filtering 3.use whata in the work space
+
+streamlit : The term 'streamlit' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct
+and try again.
+At line:1 char:1
++ streamlit run app.py
++ ~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (streamlit:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\BrodyE\OneDrive - Version 1\Desktop\RTMs\CopliotGitHub\RTM> streamlit --version
+streamlit : The term 'streamlit' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct
+and try again.
+At line:1 char:1
++ streamlit --version
++ ~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (streamlit:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\BrodyE\OneDrive - Version 1\Desktop\RTMs\CopliotGitHub\RTM>
+
+PS C:\Users\BrodyE\OneDrive - Version 1\Desktop\RTMs\CopliotGitHub\RTM> python -m pip install streamlit
+Defaulting to user installation because normal site-packages is not writeable
+DEPRECATION: Loading egg at c:\program files\python311\lib\site-packages\vboxapi-1.0-py3.11.egg is deprecated. pip 24.3 will enforce this behaviour change. A possible replacement is to use pip for package installation.. Discussion can be found at https://github.com/pypa/pip/issues/12330
+Requirement already satisfied: streamlit in c:\users\brodye\appdata\roaming\python\python311\site-packages (1.46.1)
+Requirement already satisfied: altair<6,>=4.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (5.5.0)
+Requirement already satisfied: blinker<2,>=1.5.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (1.9.0)
+Requirement already satisfied: cachetools<7,>=4.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (6.1.0)
+Requirement already satisfied: click<9,>=7.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (8.0.3)
+Requirement already satisfied: numpy<3,>=1.23 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (2.2.3)
+Requirement already satisfied: packaging<26,>=20 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (24.2)
+Requirement already satisfied: pandas<3,>=1.4.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (2.2.3)
+Requirement already satisfied: pillow<12,>=7.1.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (11.3.0)
+Requirement already satisfied: protobuf<7,>=3.20 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (6.31.1)
+Requirement already satisfied: pyarrow>=7.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (20.0.0)
+Requirement already satisfied: requests<3,>=2.27 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (2.32.3)
+Requirement already satisfied: tenacity<10,>=8.1.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (9.1.2)
+Requirement already satisfied: toml<2,>=0.10.1 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (0.10.2)
+Requirement already satisfied: typing-extensions<5,>=4.4.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (4.12.2)
+Requirement already satisfied: watchdog<7,>=2.1.5 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (6.0.0)
+Requirement already satisfied: gitpython!=3.1.19,<4,>=3.0.7 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (3.1.44)
+Requirement already satisfied: pydeck<1,>=0.8.0b4 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (0.9.1)
+Requirement already satisfied: tornado!=6.5.0,<7,>=6.0.3 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from streamlit) (6.5.1)
+Requirement already satisfied: jinja2 in c:\program files\python311\lib\site-packages (from altair<6,>=4.0->streamlit) (3.1.2)
+Requirement already satisfied: jsonschema>=3.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from altair<6,>=4.0->streamlit) (4.23.0)
+Requirement already satisfied: narwhals>=1.14.2 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from altair<6,>=4.0->streamlit) (1.46.0)
+Requirement already satisfied: colorama in c:\program files\python311\lib\site-packages (from click<9,>=7.0->streamlit) (0.4.6)
+Requirement already satisfied: gitdb<5,>=4.0.1 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from gitpython!=3.1.19,<4,>=3.0.7->streamlit) (4.0.12)
+Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from pandas<3,>=1.4.0->streamlit) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from pandas<3,>=1.4.0->streamlit) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from pandas<3,>=1.4.0->streamlit) (2025.1)
+Requirement already satisfied: charset-normalizer<4,>=2 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from requests<3,>=2.27->streamlit) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from requests<3,>=2.27->streamlit) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from requests<3,>=2.27->streamlit) (2.2.2)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from requests<3,>=2.27->streamlit) (2024.6.2)
+Requirement already satisfied: smmap<6,>=3.0.1 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from gitdb<5,>=4.0.1->gitpython!=3.1.19,<4,>=3.0.7->streamlit) (5.0.2)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\program files\python311\lib\site-packages (from jinja2->altair<6,>=4.0->streamlit) (2.1.3)
+Requirement already satisfied: attrs>=22.2.0 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from jsonschema>=3.0->altair<6,>=4.0->streamlit) (25.1.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from jsonschema>=3.0->altair<6,>=4.0->streamlit) (2024.10.1)
+Requirement already satisfied: referencing>=0.28.4 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from jsonschema>=3.0->altair<6,>=4.0->streamlit) (0.36.2)
+Requirement already satisfied: rpds-py>=0.7.1 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from jsonschema>=3.0->altair<6,>=4.0->streamlit) (0.23.1)
+Requirement already satisfied: six>=1.5 in c:\users\brodye\appdata\roaming\python\python311\site-packages (from python-dateutil>=2.8.2->pandas<3,>=1.4.0->streamlit) (1.17.0)
+
+test case ids test case Titles test case status and test case Links are not populated. Mapp from test Rail excel sheet. ID Title, Status add Tested On to the report
+
+for the Test rail Link for each Id remove the T
+
+From the Jira Excel  mapp Acceptance Critera to Custom field (Acceptance Criteria)
+
+Create a README doc desriping the app the tesch what it does and how to gett it set up loacly
+
+I want to deploy and host this app on Azure Devops what would be the right release piline to use? Azure App servive deployment or Deploy Python app?
+
+push code to this repo on azure https://endabrody@dev.azure.com/endabrody/RTM-Generator/_git/RTM-Generator
+
+PS C:\Users\BrodyE\OneDrive - Version 1\Desktop\RTMs\CopliotGitHub\RTM> git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'origin'
+PS C:\Users\BrodyE\OneDrive - Version 1\Desktop\RTMs\CopliotGitHub\RTM>
+
+out put this entire chat to a txt file
+
