@@ -1,0 +1,60 @@
+{
+  "id": 6155,
+  "title": "MCR-678-001: Validate Reason Code - Stolen (Vehicle with no active alerts)",
+  "section_id": 400,
+  "template_id": 2,
+  "type_id": 7,
+  "priority_id": 2,
+  "milestone_id": null,
+  "refs": "MCR-678",
+  "created_by": 4,
+  "created_on": 1751298463,
+  "updated_by": 4,
+  "updated_on": 1751298463,
+  "estimate": null,
+  "estimate_forecast": null,
+  "suite_id": 2,
+  "display_order": 1,
+  "is_deleted": 0,
+  "custom_automation_type": 2,
+  "custom_preconds": "Valid vehicle registration number with no alerts",
+  "custom_steps": null,
+  "custom_testrail_bdd_scenario": null,
+  "custom_expected": null,
+  "custom_steps_separated": [
+    {
+      "content": "Go to front office menu\n\nEnter a valid vehicle registration number with no alerts",
+      "expected": "Redirected to the vehicle details screen",
+      "additional_info": "",
+      "refs": ""
+    },
+    {
+      "content": "Click on the ‘Motor Tax’ tab\n\nSelect the current valid tax disc with more than three months remaining \n",
+      "expected": "See the full details of the motor tax disc",
+      "additional_info": "",
+      "refs": ""
+    },
+    {
+      "content": "Click on the “Cancel Tax” button",
+      "expected": "Redirected to the “Cancel Tax” screen",
+      "additional_info": "",
+      "refs": ""
+    },
+    {
+      "content": "Set the “Refund Due?” radio button\n\nSelect the “Vehicle Stolen” Cancel Reason code\n\nProvide the Cancellation Start Date ",
+      "expected": "Confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc",
+      "additional_info": "",
+      "refs": ""
+    },
+    {
+      "content": "Click on “Continue” to confirm the cancel motor tax transaction",
+      "expected": "Error message “Cannot select this reason code - no active stolen alert exists for the vehicle” is displayed at the top of the screen \n\nCancel Reason field is highlighted in red\n",
+      "additional_info": "",
+      "refs": ""
+    }
+  ],
+  "custom_mission": null,
+  "custom_goals": null,
+  "custom_case_custom_automation_id": null,
+  "labels": []
+}

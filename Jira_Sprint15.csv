@@ -1,0 +1,997 @@
+Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Fix versions,Due date,Votes,Labels,Labels,Description,Environment,Watchers,Watchers,Watchers,Watchers,Watchers,Watchers,Watchers Id,Watchers Id,Watchers Id,Watchers Id,Watchers Id,Watchers Id,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Inward issue link (Blocks),Inward issue link (Blocks),Outward issue link (Blocks),Outward issue link (Cloners),Outward issue link (Problem/Incident),Inward issue link (Relates),Inward issue link (Relates),Outward issue link (Relates),Outward issue link (Relates),Outward issue link (Relates),Outward issue link (Relates),Outward issue link (Relates),Attachment,Attachment,Attachment,Attachment,Attachment,Custom field (Acceptance Criteria),Custom field (Actual end),Custom field (Actual start),Custom field (Additional information),Custom field (Affected Version),Custom field (Approvals),Custom field (Atlassian project),Custom field (Atlassian project status),Custom field (BA),Custom field (Bug Category),Custom field (Build),Custom field (Category),Custom field (Category),Custom field (Change reason),Custom field (Change risk),Custom field (Change type),Custom field (Checklist Progress - BRD Approval),Custom field (Checklist Progress - BRD BA Complete),Custom field (Checklist Progress - BRD Review),Custom field (Checklist Progress - Deploy To UAT:),Custom field (Checklist Progress - FDS Approval Requested:),Custom field (Checklist Progress - FDS Tech. Analysis:),Custom field (Checklist Progress - In QA:),Custom field (Checklist Progress - Internal Cab:),Custom field (Checklist Progress - Live:),Custom field (Checklist Progress - PID * all checkboxes mandatory),Custom field (Checklist Progress - PID Approval for BRD:),Custom field (Checklist Progress - Ready To Go Live:),Custom field (Checklist Progress - Release approval * all checkboxes mandatory:),Custom field (Checklist Progress - System Test:),Custom field (Checklist Progress - Unit Test:),Custom field (Comments),Custom field (Comments on BRD),Custom field (Comments on Depl. Doc),Custom field (Comments on Dev. Doc.),Custom field (Comments on FDS),Custom field (Comments on PID),Custom field (Comments on UAT Doc.),Custom field (Components),Custom field (Confidence),Custom field (Delivery progress),Custom field (Delivery status),Custom field (Dependencies),Custom field (Designs ready),Custom field (Development),Custom field (Documents),Custom field (Effort),Custom field (Epic Color),Custom field (Epic Name),Custom field (Epic Status),Custom field (Examples document),Custom field (Expected scenario),Custom field (External issue ID),Custom field (External issue ID),Custom field (External issue ID),Custom field (External issue ID),Custom field (External issue ID),Custom field (External issue ID),Custom field (External issue ID),Custom field (External issue ID),Custom field (FIX Version),Custom field (Fix version),Custom field (Goals),Custom field (High Level Estimate (Before refinement)),Custom field (High Level Estimate (Before refinement)),Custom field (High level Estimate),Custom field (Idea archived),Custom field (Idea archived on),Custom field (Idea short description),Custom field (Impact),Custom field (Impact),Custom field (Impact score),Custom field (Insights),Custom field (Issue color),Custom field (Linked BRD),Custom field (Linked FDS),Custom field (Linked PID),Custom field (Linked UAT Doc.),Custom field (Linked on Depl. Doc),Custom field (Linked on Dev. Doc.),Custom field (Linked work items),Custom field (Links to relevant documents),Custom field (Locked forms),Custom field (ManageEngine Ticket),Custom field (New endpoints exposed in backend),Custom field (Open forms),Custom field (PID Ref),Custom field (PRA Number:),Custom field (Project overview key),Custom field (Project overview status),Custom field (Project start),Custom field (Project target),Custom field (RAG Status),Custom field (Rank),Custom field (Request Type),Custom field (Request participants),Custom field (Requirement document),Custom field (Roadmap),Satisfaction rating,Custom field (Satisfaction date),Custom field (Sentiment),Custom field (Signed Off By),Custom field (Spec ready),Sprint,Custom field (Start date),Custom field (Steps to reproduce bug),Custom field (Story Points),Custom field (Story point estimate),Custom field (Stream),Custom field (Submitted forms),Custom field (Target end),Custom field (Target start),Custom field (Team),Custom field (Technical description),Custom field (Time to done),Custom field (Time to first response),Custom field (Total forms),Custom field (Value),Custom field (Vulnerability),Custom field (Work category),Custom field ([CHART] Date of First Response),Custom field ([CHART] Time in Status),Comment,Comment,Comment,Comment,Comment,Comment,Comment,Comment,Parent,Parent key,Parent summary,Status Category,Status Category Changed
+Tax a vehicle. Cancel Tax Disc - Validate Reason Codes,MCR-678,23375,Story,QA Finished,MCR,MTO Client Replacement,software,Silvia Tejera,712020:8bd42e27-1143-4597-b696-660035556b07,,Lowest,Done,Michaela McCallion,712020:43636c95-ada0-4357-bbb7-8d391325d63e,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,09/May/25 11:15 AM,07/Jul/25 4:26 PM,16/Jul/25 1:38 PM,07/Jul/25 4:26 PM,Sprint14,,0,motortax,Refund,"*As* internal staff
+
+*I need to* be able to validate the Reason Code used when cancelling a motor tax disc 
+
+*So that* I can be sure the appropriate criteria have been met 
+
+This user story will be called when the user selects the “Continue” button on the Cancel Tax screen. It is tightly coupled with [https://digitalhubjira.atlassian.net/browse/MCR-58|https://digitalhubjira.atlassian.net/browse/MCR-58|smart-link], which is the user story responsible for displaying the Cancel Tax screen. 
+
+This user story will apply validation to the selected Cancel Reason Code selected by the user via the dropdown list box on the screen. The following validation that must be applied: 
+
+* If the user has selected a reason code of “Vehicle Stolen” there must be an active ""VEHICLE STOLEN"" alert on the vehicle
+** If no active Stolen alert exists, an error message “Cannot select this reason code - no active stolen alert exists for the vehicle” will be displayed at the top of the screen and the “Cancel Reason” field will be highlighted in red.
+* If the user has selected a reason code of “Vehicle Scrapped / Destroyed”, the vehicle status must be ""SCRAPPED VEHICLE DESTROYED""
+** If the vehicle status is not ""SCRAPPED VEHICLE DESTROYED"", an error message “Cannot select this reason code - vehicle status is not ""SCRAPPED VEHICLE DESTROYED""” will be displayed at the top of the screen and the “Cancel Reason” field will be highlighted in red.
+* If the user has selected a reason code of “Vehicle ELV”, the vehicle status must be ""END-OF-LIFE VEHICLE""
+** If the vehicle status is not ""END-OF-LIFE VEHICLE"", an error message “Cannot select this reason code - vehicle status is not ""END-OF-LIFE VEHICLE""” will be displayed at the top of the screen and the “Cancel Reason” field will be highlighted in red.
+** If the ELV / COD Issued Date on system is greater than or equal to the Cancellation Start Date, an error message “Cancellation Start Date cannot pre-date ELV Date for the vehicle” will be displayed at the top of the screen and the “Cancel Reason” field will be highlighted in red.
+* If the user has selected a reason code of “Vehicle Exported”, the vehicle status must be ""EXPORTED""
+** If the vehicle status is not ""EXPORTED"", an error message “Cannot select this reason code - vehicle status is not ""EXPORTED""” will be displayed at the top of the screen and the “Cancel Reason” field will be highlighted in red.
+** If the Exported Date on system is greater than or equal to the Cancellation Start Date, an error message “Cancellation Start Date cannot pre-date vehicle export date” will be displayed at the top of the screen and the “Cancel Reason” field will be highlighted in red.
+* If the user has selected a reason code of “Vehicle Written Off by Insurer”, the vehicle status must be ""WRITTEN OFF BY INSURER""
+** If the vehicle status is not ""WRITTEN OFF BY INSURER"", an error message “Cannot select this reason code - vehicle status is not ""WRITTEN OFF BY INSURER""” will be displayed at the top of the screen and the “Cancel Reason” field will be highlighted in red.",,Aiden Ryan,Dave Clark,Enda Brody,Jim Gallagher,Sergio Salguero Martinez,Silvia Tejera,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,70121:589962a3-02ca-4cef-bd21-a192dbf143d9,637b90dc3e79f12e5720785a,712020:9984c835-0713-4ddc-ba4a-a341bf4f3035,712020:22a69df1-dabb-4e22-bcd2-468cd3752b67,712020:8bd42e27-1143-4597-b696-660035556b07,,,,,,,,,DAD-3570,MCR-944,MCR-827,,,,,MCR-898,MCR-899,MCR-907,MCR-908,MCR-926,15/May/25 5:56 PM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;Cancel Tax Disc reason codes - v4.0.xlsx;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/18078,09/May/25 11:15 AM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;RF120 Application for a Motor Tax Refund.pdf;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/17816,,,,"*Scenario 1: Validate Reason Code - Stolen*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I go to front office menu
+
+*And* I select Vehicle menu option
+
+*And* I enter a valid vehicle registration number with no alerts
+
+*And* I am redirected to the vehicle details screen
+
+*And* I click on the ‘Motor Tax’ tab
+
+*And* I select the current valid tax disc with more than three months remaining 
+
+*And* I see the full details of the motor tax disc
+
+*And* I click on the “Cancel Tax” button
+
+*And* I am redirected to the “Cancel Tax” screen
+
+*And* I set the “Refund Due?” radio button
+
+*And* I select the “Vehicle Stolen” Cancel Reason code
+
+*And* I provide the Cancellation Start Date 
+
+*And* I confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc
+
+*And* I click on “Continue” to confirm the cancel motor tax transaction
+
+*Then* an error message “Cannot select this reason code - no active stolen alert exists for the vehicle” is displayed at the top of the screen 
+
+*And* the Cancel Reason field is highlighted in red
+
+
+
+*Scenario 2: Validate Reason Code - Scrapped Status*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I go to front office menu
+
+*And* I select Vehicle menu option
+
+*And* I enter a valid vehicle registration number with status that is not ""SCRAPPED VEHICLE DESTROYED""
+
+*And* I am redirected to the vehicle details screen
+
+*And* I click on the ‘Motor Tax’ tab
+
+*And* I select the current valid tax disc with more than three months remaining 
+
+*And* I see the full details of the motor tax disc
+
+*And* I click on the “Cancel Tax” button
+
+*And* I am redirected to the “Cancel Tax” screen
+
+*And* I set the “Refund Due?” radio button
+
+*And* I select the “Vehicle Scrapped / Destroyed” Cancel Reason code
+
+*And* I provide the Cancellation Start Date 
+
+*And* I confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc
+
+*And* I click on “Continue” to confirm the cancel motor tax transaction
+
+*Then* an error message “Cannot select this reason code - vehicle status is not ""SCRAPPED VEHICLE DESTROYED""” is displayed at the top of the screen 
+
+*And* the Cancel Reason field is highlighted in red
+
+
+
+*Scenario 3: Validate Reason Code - ELV Status*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I go to front office menu
+
+*And* I select Vehicle menu option
+
+*And* I enter a valid vehicle registration number with status that is not ""END-OF-LIFE VEHICLE""
+
+*And* I am redirected to the vehicle details screen
+
+*And* I click on the ‘Motor Tax’ tab
+
+*And* I select the current valid tax disc with more than three months remaining 
+
+*And* I see the full details of the motor tax disc
+
+*And* I click on the “Cancel Tax” button
+
+*And* I am redirected to the “Cancel Tax” screen
+
+*And* I set the “Refund Due?” radio button
+
+*And* I select the “Vehicle ELV” Cancel Reason code
+
+*And* I provide the Cancellation Start Date 
+
+*And* I confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc
+
+*And* I click on “Continue” to confirm the cancel motor tax transaction
+
+*Then* an error message “Cannot select this reason code - vehicle status is not ""END-OF-LIFE VEHICLE""” is displayed at the top of the screen 
+
+*And* the Cancel Reason field is highlighted in red
+
+
+
+*Scenario 4: Validate Reason Code - Exported Status*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I go to front office menu
+
+*And* I select Vehicle menu option
+
+*And* I enter a valid vehicle registration number with status that is not ""EXPORTED""
+
+*And* I am redirected to the vehicle details screen
+
+*And* I click on the ‘Motor Tax’ tab
+
+*And* I select the current valid tax disc with more than three months remaining 
+
+*And* I see the full details of the motor tax disc
+
+*And* I click on the “Cancel Tax” button
+
+*And* I am redirected to the “Cancel Tax” screen
+
+*And* I set the “Refund Due?” radio button
+
+*And* I select the “Vehicle Exported” Cancel Reason code
+
+*And* I provide the Cancellation Start Date 
+
+*And* I confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc
+
+*And* I click on “Continue” to confirm the cancel motor tax transaction
+
+*Then* an error message “Cannot select this reason code - vehicle status is not ""EXPORTED""” is displayed at the top of the screen 
+
+*And* the Cancel Reason field is highlighted in red
+
+
+
+*Scenario 5: Validate Reason Code - Written Off Status*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I go to front office menu
+
+*And* I select Vehicle menu option
+
+*And* I enter a valid vehicle registration number with status that is not ""WRITTEN OFF BY INSURER""
+
+*And* I am redirected to the vehicle details screen
+
+*And* I click on the ‘Motor Tax’ tab
+
+*And* I select the current valid tax disc with more than three months remaining 
+
+*And* I see the full details of the motor tax disc
+
+*And* I click on the “Cancel Tax” button
+
+*And* I am redirected to the “Cancel Tax” screen
+
+*And* I set the “Refund Due?” radio button
+
+*And* I select the “Vehicle Written Off by Insurer” Cancel Reason code
+
+*And* I provide the Cancellation Start Date 
+
+*And* I confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc
+
+*And* I click on “Continue” to confirm the cancel motor tax transaction
+
+*Then* an error message “Cannot select this reason code - vehicle status is not ""WRITTEN OFF BY INSURER""” is displayed at the top of the screen 
+
+*And* the Cancel Reason field is highlighted in red
+
+
+
+*Scenario 6: Validate Reason Code - ELV Date*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I go to front office menu
+
+*And* I select Vehicle menu option
+
+*And* I enter a valid vehicle registration number with status ""END-OF-LIFE VEHICLE""
+
+*And* I am redirected to the vehicle details screen
+
+*And* I click on the ‘Motor Tax’ tab
+
+*And* I select the current valid tax disc with more than three months remaining 
+
+*And* I see the full details of the motor tax disc
+
+*And* I click on the “Cancel Tax” button
+
+*And* I am redirected to the “Cancel Tax” screen
+
+*And* I set the “Refund Due?” radio button
+
+*And* I select the “Vehicle ELV” Cancel Reason code
+
+*And* I provide the Cancellation Start Date that pre-dates the ELV Issued Date for the vehicle
+
+*And* I confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc
+
+*And* I click on “Continue” to confirm the cancel motor tax transaction
+
+*Then* an error message “Cancellation Start Date cannot pre-date ELV Date for the vehicle” is displayed at the top of the screen 
+
+*And* the Cancel Reason field is highlighted in red
+
+
+
+*Scenario 7: Validate Reason Code - Exported Date*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I go to front office menu
+
+*And* I select Vehicle menu option
+
+*And* I enter a valid vehicle registration number with status ""EXPORTED""
+
+*And* I am redirected to the vehicle details screen
+
+*And* I click on the ‘Motor Tax’ tab
+
+*And* I select the current valid tax disc with more than three months remaining 
+
+*And* I see the full details of the motor tax disc
+
+*And* I click on the “Cancel Tax” button
+
+*And* I am redirected to the “Cancel Tax” screen
+
+*And* I set the “Refund Due?” radio button
+
+*And* I select the “Vehicle Exported” Cancel Reason code
+
+*And* I provide the Cancellation Start Date that pre-dates the Exported Date on the system for the vehicle
+
+*And* I confirm that the refund amount is calculated pro rata, based on the number of months remaining on the tax disc
+
+*And* I click on “Continue” to confirm the cancel motor tax transaction
+
+*Then* an error message “Cancellation Start Date cannot pre-date vehicle export date” is displayed at the top of the screen 
+
+*And* the Cancel Reason field is highlighted in red",,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@4fafd41f,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0|i02clm:hr,,,,,,,,,,MTO Sprint 15,,,,5.0,,,,,,"TABLES AFFECTED: <>
+
+MICROSERVICES AFFECTED: <>",,,,,,,2025-05-13 10:26:40.815,10119_*:*_2_*:*_422092235_*|*_10110_*:*_2_*:*_1912417334_*|*_10121_*:*_2_*:*_430288668_*|*_10120_*:*_2_*:*_90101936_*|*_10111_*:*_3_*:*_871774554_*|*_10125_*:*_1_*:*_277841845_*|*_10138_*:*_1_*:*_4128714_*|*_10413_*:*_2_*:*_1026329313_*|*_10126_*:*_1_*:*_64237996,"13/May/25 11:26 AM;637b90dc3e79f12e5720785a;*Test Notes*
+
+Test if Vehicle owner is Company - Active Stolen alert
+
+Test if Vehicle owner is State - Active Stolen alert
+
+Test if Vehicle owner is Diplomat - Active Stolen alert
+
+If other status 
+
+CURRENT
+SCRAPPED VEHICLE DESTROYED
+EXPORTED
+HIRE DRIVE
+INACTIVE
+END-OF-LIFE VEHICLE
+RESTRICTED DATA ACCESS LIMITED
+EXPORTED - VRT REFUNDED
+WRITTEN OFF BY INSURER
+
+
+
+*alerts* 
+
+CONVERT OWNER ALERT
+CHEQUE UNPAID
+CONVERT VEHICLE ALERT
+DANGEROUS GOODS
+DUPLICATE REGISTRATION BOOK
+DUPLICATE VEHICLE LICENCE CERT
+FAIL DANGEROUS
+INTENTION TO EXPORT
+INVALID PASS STATEMENT
+INSURANCE WITHDRAWN
+FULL LICENCE CANCELLED
+LATER GAP FILL
+REG OWNER IN PARTNESHIP
+VEHICLE OFF ROAD
+PART OF LICENCE CANCELLED
+REALLOTTMENT
+REGISTRATION BOOK HELD
+RD CHEQUE TENDERED
+REFUND GRANTED
+REG NUMBER REALLOCATED
+SEE CORRESPONDENCE NEW
+CONTACT SUPERVISOR
+ONCE OFF VRC FOR UNLICENSED
+VEHICLE STOLEN
+WRONG ASSESSMENT
+LICENCE ISSUE FOR WRONG PERIOD
+WRONG REG NUMBER ON LICENCE
+
+Api Testing the Error message 
+
+
+
+Validation Extra can Not cancel tax Prior to End of life date if End of life date 2024-05-25 cant set to 2024-05-24 show error message
+
+Validation Extra can Not cancel tax Prior to Exported date if Export date 2024-05-25 cant set to 2024-05-24 show error message","16/Jun/25 9:52 AM;712020:22a69df1-dabb-4e22-bcd2-468cd3752b67;[~accountid:70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454] I just to see one detail about that screen:
+
+# We are checking the vehicle status but we cant see the status in this cancelation screen so you need to go back and check which is the vehicle status in case of cancelation reason validation appear.
+# The same for issue Date and export Date.
+
+My question is, should we show/hide exportDate and issue date if exist? Also should we always show the vehicle status?
+
+On the other hand, the date validation:
+
+#  “Cancellation Start Date cannot pre-date ELV Date for the vehicle”
+#  “Cancellation Start Date cannot pre-date vehicle export date”
+
+Is correct that validation? …. should be “post-date“? In my opinion the cancelation date should be after export date/issue date, for example I cancel once the vehicle is exported not before….
+","16/Jun/25 12:01 PM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;[~accountid:712020:22a69df1-dabb-4e22-bcd2-468cd3752b67] 
+
+There have been no requests to add these details to the Cancel Tax screen. I think we should not add those details unless the users request them. 
+
+Regarding the wording of the error messages for ELV date validation and Export date validation, I’m not sure if the logic needs to be reviewed - I think it’s ok. For example, if the ELV Date is 16/06/2025, the Cancellation Date would need to be 01/07/2025, i.e. the first of the month following the ELV Date. We cannot have the Cancellation date pre-dating the ELV Date, e.g. we cannot set it to 01/06/2025, as the vehicle would need to have been taxed for the month of June, between 01/06/2025 and 16/06/2025. The same would be true for the Export Date. Does this make sense? Happy to discuss further if you need to talk it through. ","24/Jun/25 2:41 PM;637b90dc3e79f12e5720785a;Testing complete we need to make a code change 
+
+* The NVDF does hold an ELV date in the elv_notification table – it holds both en_issue_dt and en_created_dt.
+* The en_issue_dt is the date the vehicle was presented to the ATF and scrapped. 
+* The en_created_dt is the date the ELV was recorded on the NVDF.
+* The en_issue_date should be used as this is the date the MTO use to determine refund of motor tax applications.
+
+End of life scenario we should check  en_issue_date ","25/Jun/25 1:32 PM;712020:22a69df1-dabb-4e22-bcd2-468cd3752b67;created ticket [[DAD-3570] MCR. Add new fields en_issue_dt, en_created_dt in elv_notification table in MariaDB - Jira|https://digitalhubjira.atlassian.net/browse/DAD-3570]","01/Jul/25 8:59 AM;712020:8bd42e27-1143-4597-b696-660035556b07;[https://digitalhubjira.atlassian.net/browse/DAD-3570|https://digitalhubjira.atlassian.net/browse/DAD-3570|smart-link]. -Closed as done as it’s not what we needed- *(Reopened)*
+
+Observations of cancelling on current MTO:
+
+* Options are different
+* Using “refund” as cancellation reason following tables are updated:
+** vehicle_licence
+** vehicle (update expiry date / update sord expiry date if needed)
+** stock_cancel_issued
+** off road declaration created for the rest of the time motor tax was still valid
+** remove exemptions related to the cancellation (vehicle used didn’t have any so not sure about logic behind this yet)
+* Vehicle licence issue date and vehicle licence end date used for validation of cancellation date",,,18356,MCR-7,Motor tax,Done,07/Jul/25 4:26 PM
+Find a garage - View Garage Details Screen,MCR-266,20108,Story,QA Finished,MCR,MTO Client Replacement,software,Silvia Tejera,712020:8bd42e27-1143-4597-b696-660035556b07,,Medium,Done,Michaela McCallion,712020:43636c95-ada0-4357-bbb7-8d391325d63e,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,07/Feb/25 5:32 PM,11/Jul/25 12:50 PM,16/Jul/25 9:40 AM,11/Jul/25 12:50 PM,Sprint15,,0,Garage_details,,"*As* internal staff
+
+*I need to* be able to view the garage details screen 
+
+*So that* I can clearly see the details associated with the garage
+
+This user story will focus on delivering the _front end_ functionality for the View Garage Details screen.  
+
+This user story will ensure that the _front end_ function is in place to display all the relevant garage details and present them to the View Garage Details screen for display. The retrieval of the data from the database will be covered as part of user story [https://digitalhubjira.atlassian.net/browse/MCR-28|https://digitalhubjira.atlassian.net/browse/MCR-28|smart-link] 
+
+The Garage Code, Garage Name and Company Registration Number will be displayed at the top of the screen, under the “Garage Details” heading. These three fields will remain as the header at the top of all the garage-related screens. This is a similar approach to the one used for viewing a vehicle. 
+
+If the user selects the “Back” button, they will be returned to the previous screen. 
+
+The functionality behind the “New Trade Plate” button will be delivered as part of user story [https://digitalhubjira.atlassian.net/browse/MCR-311|https://digitalhubjira.atlassian.net/browse/MCR-311|smart-link], [https://digitalhubjira.atlassian.net/browse/MCR-538|https://digitalhubjira.atlassian.net/browse/MCR-538|smart-link] and [https://digitalhubjira.atlassian.net/browse/MCR-36|https://digitalhubjira.atlassian.net/browse/MCR-36|smart-link].
+
+The functionality behind the “Update” button will be delivered as part of user story [https://digitalhubjira.atlassian.net/browse/MCR-60|https://digitalhubjira.atlassian.net/browse/MCR-60|smart-link]. 
+
+The screen design that will be delivered as part of this user story is as follows: 
+
+!image-20250630-084852.png|width=1920,height=1533,alt=""image-20250630-084852.png""!
+
+
+
+The legacy “maintain garage details” screen is as follows: 
+
+!image-20250207-173901.png|width=649,height=489,alt=""image-20250207-173901.png""!
+
+The legacy “view garage details” screen is as follows: 
+
+!image-20250218-085943.png|width=1327,height=699,alt=""image-20250218-085943.png""!
+
+We will look to combine both of these screens to ensure that the relevant fields are available to the user, along with the relevant buttons.",,Aiden Ryan,Enda Brody,,,,,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,637b90dc3e79f12e5720785a,,,,,,,,,,,,,,,,MCR-157,,,,MCR-985,,,,,01/Jul/25 9:58 AM;e9533b74-fb5e-4dd6-a976-6a46d767227c;10316.svg;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/19923,07/Feb/25 5:39 PM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;image-20250207-173901.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/14710,18/Feb/25 9:01 AM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;image-20250218-085943.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/14971,30/Jun/25 9:48 AM;712020:410c1b21-9237-4174-bbc7-e2c018f5d03e;image-20250630-084852.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/19890,,"*Scenario 1: View garage details.*  
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I enter a _valid_ garage code
+
+*And* I click Search
+
+*Then* I am redirected to the view garage details screen 
+
+*And* I can see all of the details associated with the garage
+
+*And* all of the garage details displayed are correct
+
+
+
+*Scenario 2: View garage details.  Back Button 1*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I enter a _valid_ garage code
+
+*And* I click Search
+
+*Then* I am redirected to the view garage details screen 
+
+*And* I can see all of the details associated with the garage
+
+*And* all of the garage details displayed are correct
+
+*And* I press the “Back” Button 
+
+*And* I am returned to the front office menu. 
+
+
+
+*Scenario 3: View garage details.  Back Button 2*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select “Advanced Garage Search”
+
+*And* I enter a valid set of garage search criteria
+
+*And* I click Search
+
+*And* I see a list of garages to choose from 
+
+*And* I select one of the garages by clicking on the “Garage Code”
+
+*Then* I am redirected to the view garage details screen 
+
+*And* I can see all of the details associated with the garage
+
+*And* all of the garage details displayed are correct
+
+*And* I press the “Back” Button 
+
+*And* I am returned to the advanced search results screen. 
+
+
+
+*Scenario 4: View garage details.  Bread Crumbs 1* 
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I enter a _valid_ garage code
+
+*And* I click Search
+
+*Then* I am redirected to the view garage details screen 
+
+*And* I can see all of the details associated with the garage
+
+*And* all of the garage details displayed are correct
+
+*And* I can see the bread crumbs showing “Front Office > Garage Details” 
+
+
+
+*Scenario 5: View garage details.  Bread Crumbs 2*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select “Advanced Garage Search”
+
+*And* I enter a valid set of garage search criteria
+
+*And* I click Search
+
+*And* I see a list of garages to choose from 
+
+*And* I select one of the garages by clicking on the “Garage Code”
+
+*Then* I am redirected to the view garage details screen 
+
+*And* I can see all of the details associated with the garage
+
+*And* all of the garage details displayed are correct
+
+*And* I can see the bread crumbs showing “Front Office > Advanced Garage Search > Garage List > Garage Details” ",,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@1409dc5c,,,,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0|i01t7i:9ozczzx,,,,,,,,,,MTO Sprint 15,,,,8.0,,,,,,"MICROSERVICES AFFECTED:
+
+{noformat}/garages/v1/{garageCode}{noformat}
+
+{noformat}{
+  ""code"": ""6018"" (g_code),
+  ""address"": {
+    ""addressLine1"": ""1 Millennium Walkway"" (o_addr1-> vehicle_owner),
+    ""addressLine2"": ""Jervis Street"" (o_addr2-> vehicle_owner),
+    ""town"": ""Dublin"" (o_town-> vehicle_owner),
+    ""countyCode"": ""KE"" (o_cc_code-> vehicle_owner),
+    ""countyDesc"": ""CO. KILDARE"" (cc_desc-> county),
+    ""sortCode"": ""24"" (po_sort_code-> vehicle_owner),
+    ""eircode"": ""D01K752"" (o_eircode-> vehicle_owner),
+  }
+  ""name"": ""McCarthys Garage"" (g_name),
+  ""rsiNumber"": ""6337903C"" (g_rsi_no),
+  ""vatNumber"": ""3096397W"" (g_vat_no),
+  ""planNumber"": ""PD02/497"" (g_plan_no),
+  ""contactName"": ""URSULA HENNERTY"" (g_contact),
+  ""emailAddress"": ""DAVIDF21@GMAIL.COM"" (g_email),
+  ""phonePrefix"": ""087"" (g_std_ph),
+  ""phoneNumber"": ""7546849"" (g_phone),
+  ""issuedIdentifierDate"": ""2019-02-01"" (g_letter_dt),
+  ""comments"": ""string"" (g_remark),
+  ""ratesAccountNumber"": ""180364007"" (g_rate_acc),
+  ""status"":{
+    ""code"": ""C"" (g_trade_ind),
+    ""description"": ""CURRENT"" (trader_status -> g_trade_desc)
+  },
+  ""insurance"":{
+    ""insuranceCompanyCode"": ""AA"",
+    ""insuranceExpiryDate"": ""2020-01-13""
+  },
+  ""testCentreType"":{
+    ""testCentreTypeCode"":""H"",
+    ""testCentreTypeDesc"": ""HEAVY GOODS VEHICLES""
+  }
+}{noformat}",,,,,,,2025-03-11 11:02:08.831,10119_*:*_1_*:*_10697_*|*_10110_*:*_1_*:*_9669295714_*|*_10121_*:*_1_*:*_0_*|*_10120_*:*_1_*:*_7141877_*|*_10111_*:*_1_*:*_689178068_*|*_10125_*:*_1_*:*_2309480376_*|*_10138_*:*_1_*:*_11843_*|*_10413_*:*_1_*:*_1396005_*|*_10126_*:*_1_*:*_432244642,"06/Mar/25 11:09 AM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;Some points related to the design of the View Garage Details screen, based on discussion regarding the Legacy system screen design with Stephen Cumbers on 5th Fed 2025: 
+
+* These Garage details are set up in Shannon and very few details should be updated by the MTOs.
+* “Co. Reg”, “VAT” and “RSI” are never updated by MTO, but they still belong here as read only fields.
+* “Rate a/c No” is mandatory and can be updated by MTO.
+* “Plan” is an Alphanumeric field and refers to the Planning Application reference number.
+* Garage name and all the address fields should not be updated by MTO, but they still belong here as read only fields.
+* “Zip” is redundant here and can be removed from the screen.
+* “Issued Identifier On” contains the date the garage code was issued?
+* “Contact” is the garage contact; it’s never updated by the MTOs and can be removed from the screen.
+* “Trade Status” is an important field, but it should never be updated by MTO.
+* “Test Status” and “Test Type” are no longer relevant and can be removed from the screen.
+* “Insurance” and “End” (i.e. insurance end date) are the primary fields that are updated by the MTO.
+* “Comments” are not used that often, but we should retain them; they should remain editable by the MTO.
+* The “Save” button saves the changes that have been made.
+* The “Quit” button exits the screen and returns to the search screen without saving any changes.
+* The “Next” button jumps to the next garage, which is not required and can be removed from the screen.
+* The “View” button results in a new view only screen being displayed: 
+** It shows similar details to this screen but does not allow any of the details to be updated.
+** It also has additional buttons for the user, e.g. Trade Plate History. ","11/Mar/25 11:02 AM;637b90dc3e79f12e5720785a;*Test Notes*
+
+Look at acceptance tests for Garage details 
+
+Verify Garage Details match Api response and Db values",,,,,,,18405,MCR-23,Garage,Done,11/Jul/25 12:50 PM
+Find a garage - Display garage search results,MCR-27,18411,Story,QA Finished,MCR,MTO Client Replacement,software,Silvia Tejera,712020:8bd42e27-1143-4597-b696-660035556b07,,Medium,Done,Michaela McCallion,712020:43636c95-ada0-4357-bbb7-8d391325d63e,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,10/Oct/24 3:14 PM,11/Jul/25 12:50 PM,,11/Jul/25 12:50 PM,Sprint15,,0,Garage_search,,"*As* internal staff
+
+*I need to* be able to view a list of garages that satisfy the search criteria provided
+
+*So that* I can select the required garage 
+
+If there is more than one garage that satisfies the garage advanced search criteria, a list of the garages that matched the search criteria is displayed. The MTO agent can view the list of garages that match the search criteria and select the required garage from the list displayed. This user story will deliver the _front end_ screen to display the list of garages that satisfy the advanced search criteria provided. 
+
+The following columns will be included on the search results screen: 
+
+* Garage Code
+* Garage Name
+* Town 
+* County
+* Trade Status
+* VAT Number
+
+By default, the search results are sorted by the Garage Code ascending. 
+
+The fields “Trade Status” and “VAT Number” do not form part of the existing end point. This data will need to be retrieved from the database in order to  display the details on the search results screen. We have added a new technical task ( [https://digitalhubjira.atlassian.net/browse/MCR-455|https://digitalhubjira.atlassian.net/browse/MCR-455|smart-link] ) to retrieve these details. 
+
+There is no limit to the number of garages that can be returned as a result of the garage advanced search functionality.
+
+Pagination will be required for this screen; this will allow the user to quickly navigate through the list of garages that satisfied the search criteria. The default number of rows displayed in the search results table will be 10 rows per page. The user will be able to use “Previous” and “Next” pagination keys, as appropriate. 
+
+If the contents of a field in the table exceeds the space available, the user will see three dots at the end of the displayed text (“…”). The user will be able to hover over the field and the full contents of the field will be displayed. 
+
+If the user sees the record they are looking for, they may click on the corresponding “View” hyperlink on the right hand side of the screen to select the garage and move to the “View Garage Details” screen. This functionality will be delivered as part of user story [https://digitalhubjira.atlassian.net/browse/MCR-28|https://digitalhubjira.atlassian.net/browse/MCR-28|smart-link]. 
+
+However, if the user is still unsure which garage they are looking for, they can return to the Advanced Garage Search screen using the breadcrumbs hyperlinks and update the search criteria. When the user goes back to the advanced garage search screen, the previously entered search criteria will still be visible. From there, the user will be able to add to the search criteria, change it, or clear it, as required. 
+
+We would like to be able to click on the Garage Code to select the garage as well as being able to click on the “View” hyperlink on the right hand side of the table. This approach is similar to the approach used to display the vehicle advanced search results.
+
+!image-20250311-114444.png|width=793,height=603,alt=""image-20250311-114444.png""!
+
+The Legacy screen is as follows:
+
+!image-20241010-150020.png|width=341,height=258,alt=""image-20241010-150020.png""!",,Aiden Ryan,Alvaro Frias,Enda Brody,Silvia Tejera,,,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,6135d2d27eb35f006915dbb2,637b90dc3e79f12e5720785a,712020:8bd42e27-1143-4597-b696-660035556b07,,,,,,,,,,,MCR-455,MCR-456,,,,MCR-28,MCR-976,MCR-26,MCR-980,MCR-983,,,10/Oct/24 4:00 PM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;image-20241010-150020.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/11443,11/Mar/25 11:49 AM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;image-20250311-114444.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/15763,04/Jul/25 9:41 AM;rk:7c958c8c-106a-49c4-9f0d-b3b05a72f9f6;image-20250704-084008.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/20019,,,"*Scenario 1: Display garage search results*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select Advanced Garage Search link
+
+*And* I enter one or more valid search criteria 
+
+*And* I click Search
+
+*And* I am redirected to the garage list screen
+
+*Then* I can view a list of the garages that satisfy the search criteria provided.
+
+*And* all the required garage data is populated in the table, including “Trade Status” and “VAT Number” 
+
+
+
+*Scenario 2: Display garage search results. Pagination. All garages that satisfy the search criteria are provided.* 
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select Advanced Garage Search link
+
+*And* I enter one or more valid search criteria 
+
+*And* I click Search
+
+*And* I am redirected to the garage list screen
+
+*And* I can view a list of the garages that satisfy the search criteria provided.
+
+*Then* I can scroll through the list of garages that satisfy the search criteria 
+
+*And* I can use pagination to jump to the start / middle / end of the list. 
+
+
+
+*Scenario 3: Display garage search results. Breadcrumbs*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select Advanced Garage Search link
+
+*And* I enter one or more valid search criteria 
+
+*And* I click Search
+
+*And* I am redirected to the garage list screen
+
+*Then* I can view a list of the garages that satisfy the search criteria provided.
+
+*And* I click on the breadcrumbs at the top of the screen to return to the advanced garage search screen. ",,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@3e5a9474,,,,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0|i01t7i:9ozcxm,,,,,,,,,,MTO Sprint 15,,,,8.0,,,,,,"{noformat}/garages/v1/search{noformat}
+
+ 
+
+{noformat}{
+  ""resultsTotal"": number,
+  ""items"": [
+    {
+      ""code"": ""6018"" (g_code),
+      ""name"": ""McCarthys Garage"" (g_name),
+      ""town"": ""Dublin"" (g_town),
+      ""countyCode"": ""K"" (g_cc_code),
+      ""countyDesc"": ""CO. KILDARE"" (cc_desc-> county),
+      ""eircode"": ""D01K752"" (g_eircode),
+      ""email"": ""DAVIDF21@GMAIL.COM"" (g_email),
+      ""tradeStatusCode"": ""C"" (g_trade_desc) trader_status -> g_trade_desc),
+      ""tradeStatusDesc"": ""Current"" (g_trade_ind) trader_status -> g_trade_desc),
+      ""vatNumber"": ""3096397W"" (g_vat_no),
+      ""addressLine1"": ""1 Millennium Walkway"" (g_addr1), (required by other DoT team)
+      ""addressLine2"": ""Jervis Street"" (g_addr2), (required by other DoT team)
+      ""phonePrefix"": ""087"" (g_std_ph), (required by other DoT team)
+      ""phoneNumber"": ""7546849"" (g_phone), (required by other DoT team),
+      ""tradePlate"": ""4567D""  (trade plate => tp.tp_stock_no)
+    }
+  ]
+}{noformat}
+
+*Available search fields:*
+
+{noformat}code
+codePartialMatch
+tradePlate
+tradePlatePartialMatch
+name
+namePartialMatch
+town
+townPartialMatch
+countyCode
+ownerEircode
+ownerEmail
+vatNumber
+vatNumberPartialMatch
+page
+size
+sort{noformat}
+
+*Available sortable fields:*
+
+{noformat}""code"", 
+""tradePlate"", 
+""name"", 
+""town"", 
+""countyDesc"", 
+""countyCode"", 
+""eircode"", 
+""email"", 
+""vatNumber"",
+""traderStatusCode"", 
+""tradeStatusDesc"", 
+""vatNumber"", 
+""addressLine1"", 
+""addressLine2"", 
+""phoneNumber"", 
+""phonePrefix""{noformat}
+
+{adf:display=block}
+{""type"":""table"",""attrs"":{""isNumberColumnEnabled"":false,""layout"":""center"",""localId"":""1f9a79d5-2602-47b3-91f4-7815af262e46""},""content"":[{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{""colspan"":6,""background"":""#ffc400""},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""GARAGE""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{""background"":""#fffae6""},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""Column Name ""}]}]},{""type"":""tableCell"",""attrs"":{""background"":""#fffae6""},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""Type              ""}]}]},{""type"":""tableCell"",""attrs"":{""background"":""#fffae6""},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""Length""}]}]},{""type"":""tableCell"",""attrs"":{""background"":""#fffae6""},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""Nulls""}]}]},{""type"":""tableCell"",""attrs"":{""background"":""#fffae6""},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""Defaults""}]}]},{""type"":""tableCell"",""attrs"":{""background"":""#fffae6""},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""Seq""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_code                          "",""marks"":[{""type"":""strong""}]}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""6""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no  ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_addr1                         ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""35""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_addr2                         ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""35""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_cc_code                       ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""2""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_co_reg                        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""15""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_contact                       ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""25""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_disqual_flg  ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_eircode                       ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""7""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_email                         ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""100""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_letter_dt                     ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""ingresdate        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""      ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_name                          ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar            ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""35""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_namekey   ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""25""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_phone                         ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""7""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_plan_no                       ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""8""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_rate_acc                      ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""10""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_remark                        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""160""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_reminder_dt   ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""ingresdate        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""      ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_rsi_no                         ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""9""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_stat_dt                       ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""ingresdate        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""      ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_stat_mto                      ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""3""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_stat_us                       ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char               ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""5""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_std_ph                        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""4""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_town                          ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""35""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_trade_ind                     ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_vat_no                        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""10""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""g_zip_code                      ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""4""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""mto_code  ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""integer           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""opt_lock_cnt     ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""integer           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""ose_code                        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""varchar           ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" value ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""po_sort_code    ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""2""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""tct_code                        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""   yes ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]},{""type"":""tableRow"",""content"":[{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""tcx_code                        ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""char              ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""1""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""  no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":""    no ""}]}]},{""type"":""tableCell"",""attrs"":{},""content"":[{""type"":""paragraph"",""content"":[{""type"":""text"",""text"":"" ""}]}]}]}]}
+{adf}",,,,,,,2025-03-11 10:46:28.427,10119_*:*_1_*:*_4185_*|*_10110_*:*_2_*:*_14437424041_*|*_10121_*:*_1_*:*_0_*|*_10120_*:*_1_*:*_408972_*|*_10111_*:*_1_*:*_522053493_*|*_10125_*:*_1_*:*_6582985893_*|*_10413_*:*_1_*:*_46153_*|*_10126_*:*_1_*:*_1879710257,"11/Mar/25 10:46 AM;637b90dc3e79f12e5720785a;*Test Notes*
+
+Verify Pagination 10 per table 
+
+Look at Garage Table
+
+Trade Status and Vat Number  API not returning  currently these values 
+
+Will need Api Acceptance tests. 
+
+Check Bread Crumbs 
+
+Verify URL can be shared and open the Page and shows the same Results Page example Garge Code= 12 
+
+link garegCode=123 
+
+SEE THE same LIST","02/Jul/25 5:01 PM;712020:8bd42e27-1143-4597-b696-660035556b07;Hi [~accountid:70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454] , sorry but cannot information here about sorting, just the default sorting by code.
+
+Does this mean user won’t be able to change sorting and use other columns to sort by?
+
+Regards
+
+Silvia",02/Jul/25 5:33 PM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;[~accountid:712020:8bd42e27-1143-4597-b696-660035556b07] there was no request for the user to be able to change the sort sequence of the data. The current screen sorts by garage code and that’s what we’re replicating. ,"04/Jul/25 9:41 AM;712020:8bd42e27-1143-4597-b696-660035556b07;{panel:bgColor=#deebff}
+After conversation, we won’t add trade plate to results which means we need to remove it from the results, otherwise we will show duplicates
+{panel}
+
+[~accountid:70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454] , if it’s ok I’m going to add tradePlate to the results as otherwise results will be confusing because it’s the only value that differs from the other ones … if not, we can remove the tradePlate from results and I guess then we can get unique results
+
+
+!image-20250704-084008.png|width=1406,height=680,alt=""image-20250704-084008.png""!
+
+Regards
+
+Silvia","04/Jul/25 9:46 AM;712020:8bd42e27-1143-4597-b696-660035556b07;Thanks[~accountid:70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454] 
+Endpoint is prepared for that, will test anyway if it works and remove sorting from fields after",,,,18405,MCR-23,Garage,Done,11/Jul/25 12:50 PM
+Find a garage - Search for a garage using other search criteria,MCR-26,18409,Story,QA Finished,MCR,MTO Client Replacement,software,Silvia Tejera,712020:8bd42e27-1143-4597-b696-660035556b07,,Medium,Done,Michaela McCallion,712020:43636c95-ada0-4357-bbb7-8d391325d63e,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,Aiden Ryan,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,10/Oct/24 3:13 PM,11/Jul/25 12:51 PM,10/Jul/25 8:37 AM,11/Jul/25 12:51 PM,Sprint15,,0,Garage_search,,"*As* internal staff
+
+*I need to* be able to search for a garage using a variety of different search criteria
+
+*So that* I can view the details of the associated garage
+
+User story [https://digitalhubjira.atlassian.net/browse/MCR-265|https://digitalhubjira.atlassian.net/browse/MCR-265|smart-link] will deliver the font end for the advanced garage search screen. This user story will focus on delivering the _screen logic and validation_ associated with the screen.
+
+The Garage Code is a unique identifier that allows us to identify a specific vehicle. If the Garage Code is not available, the MTO client will need to use other details to search for the garage, e.g. 
+
+* Garage Name
+* Trade Plate Number
+* Town
+* County
+* VAT Number
+
+Wildcard searches should be applied by default as part of the Advanced Garage Search screen; they will be implied, i.e. the user should not have to input an asterisk “*”.
+
+There are no minimum length restrictions associated with the search criteria - the user can choose to enter as little as one character should they wish. Obviously, the more characters they enter the better for their search, but the screen will not need to enforce minimum lengths.
+
+Once the MTO agent has entered the required search criteria, they can select the ""Search"" button to find the list of garages that match the search criteria. This user story will also deliver the required back end call to identify whether or not any garages match the search criteria provided.
+
+The screen will require the user to use at least _two_ search criteria (including the County that defaults to the county associated with the user). If the user does not provide sufficient search criteria before they click on the “Search” button, the system will display an error message at the top of the screen stating “Please provide two or more search criteria”. 
+
+{color:#ff5630}Note: we cannot call the end point to retrieve Garage data from the database until the new Garage service has been delivered, as discussed in Daily Scrum call on 27/03/2025.{color}
+
+-If one garage matches the search criteria, the details of the garage are displayed on the next screen. User story- [https://digitalhubjira.atlassian.net/browse/MCR-266|https://digitalhubjira.atlassian.net/browse/MCR-266|smart-link] -will deliver the functionality to display the relevant garage details.-  {color:#006644}We have removed this requirement as it is inconsistent with the approach currently implemented for vehicles. If we have only one search result for a vehicle, we still display the search results screen. We will follow the same approach for garages.{color} 
+
+If there are multiple garages that match the search criteria, the list of garages are displayed on the garage search results screen and the MTO agent will select the garage they are interested in from the list. User story [https://digitalhubjira.atlassian.net/browse/MCR-27|https://digitalhubjira.atlassian.net/browse/MCR-27|smart-link] will display a list of the garages that satisfy the search criteria. 
+
+If no garage matches the search criteria provided, the system will display a error message stating “Garage details not found” at the top of the screen.  
+
+If the user selects the “Clear” button, the search criteria will be cleared, allowing the user to start another search with new search criteria.
+
+If the user enters non-alphanumeric characters in any of the fields (e.g. !, &, #, etc.), a message will be displayed at the top of the screen stating “Alphanumeric characters only” and the offending field on the screen will be highlighted in red. 
+
+!image-20250219-114022.png|width=883,height=530,alt=""image-20250219-114022.png""!
+
+The legacy screen is as follows: 
+
+!image-20250207-171459.png|width=713,height=535,alt=""image-20250207-171459.png""!",,Aiden Ryan,Alvaro Frias,Enda Brody,Silvia Tejera,,,70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454,6135d2d27eb35f006915dbb2,637b90dc3e79f12e5720785a,712020:8bd42e27-1143-4597-b696-660035556b07,,,,,,,,,,,,,,,MCR-1000,MCR-27,MCR-28,MCR-25,MCR-456,MCR-568,MCR-984,MCR-988,07/Feb/25 5:28 PM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;image-20250207-171459.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/14707,19/Feb/25 11:40 AM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;image-20250219-114022.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/15044,21/May/25 6:28 PM;rk:7c958c8c-106a-49c4-9f0d-b3b05a72f9f6;image-20250521-172852.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/18348,10/Jul/25 10:13 AM;rk:7c958c8c-106a-49c4-9f0d-b3b05a72f9f6;image-20250710-091248.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/20192,10/Jul/25 11:08 AM;rk:7c958c8c-106a-49c4-9f0d-b3b05a72f9f6;image-20250710-100850.png;https://digitalhubjira.atlassian.net/rest/api/3/attachment/content/20194,"*Scenario 1: Search for a garage*
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select Advanced Garage Search link
+
+*And* I enter two or more valid search criteria 
+
+*And* I click Search
+
+*Then* I am redirected to the garage list screen
+
+
+
+*Scenario 2: Search for a garage. Validations. No results found.* 
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select Advanced Garage Search link
+
+*And* I enter a set of search criteria 
+
+*And* I click Search
+
+*And* there are no garages in the database that match the search criteria provided
+
+*Then* I see the following pop-up message on the screen : “Garage details not found”
+
+*And* I click the “OK” button to acknowledge the message
+
+
+
+*Scenario 3: Search for a garage. Validations. Less than two search criteria provided.* 
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select Advanced Garage Search link
+
+*And* I only enter one search criteria 
+
+*And* I click Search
+
+*Then* I see the following message displayed on the screen : “Please provide two or more search criteria”
+
+
+
+*Scenario 4: Search for a garage. Validations. Non-alphanumeric characters.* 
+
+*Given* I am logged in as an internal user (cashier or supervisor)
+
+*When* I land on the front office menu
+
+*And* I select Advanced Garage Search link
+
+*And* I use non-alphanumeric characters in the search criteria 
+
+*And* I click Search
+
+*Then* I see the following message displayed at the top of the screen: “Alphanumeric characters only”
+
+*And* I see that the offending field on the screen is highlighted in red. ",,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@652a2334,,,,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0|i02dfm:4,,,,,,,,,,MTO Sprint 15,,,,5.0,,,,,," 
+
+{noformat}Localcontext: common-services
+GET  /garages/v1/search
+ 
+
+{
+  ""resultsTotal"": number,
+  ""items"": [
+    {
+      ""code"": ""6018"" (g_code),
+      ""name"": ""McCarthys Garage"" (g_name),
+      ""town"": ""Dublin"" (g_town),
+      ""countyCode"": ""K"" (g_cc_code),
+      ""countyDesc"": ""CO. KILDARE"" (cc_desc-> county),
+      ""eircode"": ""D01K752"" (g_eircode),
+      ""email"": ""DAVIDF21@GMAIL.COM"" (g_email),
+      ""tradeStatusCode"": ""C"" (g_trade_desc) trader_status -> g_trade_desc),
+      ""tradeStatusDesc"": ""Current"" (g_trade_ind) trader_status -> g_trade_desc),
+      ""vatNumber"": ""3096397W"" (g_vat_no),
+      ""addressLine1"": ""1 Millennium Walkway"" (g_addr1), (required by other DoT team)
+      ""addressLine2"": ""Jervis Street"" (g_addr2), (required by other DoT team)
+      ""phonePrefix"": ""087"" (g_std_ph), (required by other DoT team)
+      ""phoneNumber"": ""7546849"" (g_phone), (required by other DoT team),
+      ""tradePlate"": ""4567D""  (trade plate => tp.tp_stock_no)
+    }
+  ]
+}{noformat}
+
+*Available search fields:*
+
+{noformat}code
+codePartialMatch
+tradePlate
+tradePlatePartialMatch
+name
+namePartialMatch
+town
+townPartialMatch
+countyCode
+ownerEircode
+ownerEmail
+vatNumber
+vatNumberPartialMatch
+page
+size
+sort{noformat}
+
+*Available sortable fields:*
+
+{noformat}""code"", 
+""tradePlate"", 
+""name"", 
+""town"", 
+""countyDesc"", 
+""countyCode"", 
+""eircode"", 
+""email"", 
+""vatNumber"",
+""traderStatusCode"", 
+""tradeStatusDesc"", 
+""vatNumber"", 
+""addressLine1"", 
+""addressLine2"", 
+""phoneNumber"", 
+""phonePrefix""{noformat}
+
+*Table*
+
+!image-20250521-172852.png|width=437,height=608,alt=""image-20250521-172852.png""!",,,,,,,2025-03-06 13:03:10.365,10119_*:*_1_*:*_339823862_*|*_10110_*:*_2_*:*_14752345360_*|*_10121_*:*_1_*:*_0_*|*_10120_*:*_1_*:*_7016125_*|*_10111_*:*_1_*:*_192556065_*|*_10125_*:*_1_*:*_6581657272_*|*_10413_*:*_1_*:*_90923514_*|*_10126_*:*_1_*:*_1456726926,"06/Mar/25 1:03 PM;637b90dc3e79f12e5720785a;*Test Notes* 
+
+See garage table
+
+Check wild card search  Garage Name {{McCarthys}}
+
+Trade Plate  -c123  but the full is C123456
+
+VAT number – 123456  reurn has all records with 123456 as Vat number","12/Jun/25 12:32 PM;712020:8bd42e27-1143-4597-b696-660035556b07;[~accountid:70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454] -, is the trade plate number , the stock item or the number that looks like a sequential number?- 
+
+Never mind, I went to existing application and it’s the stock number
+
+Thanks
+
+Silvia","12/Jun/25 4:36 PM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;[~accountid:712020:8bd42e27-1143-4597-b696-660035556b07] Yes, it’s the stock number, e.g. “123C25”","08/Jul/25 5:49 PM;712020:8bd42e27-1143-4597-b696-660035556b07;[~accountid:637b90dc3e79f12e5720785a] , [~accountid:712020:43636c95-ada0-4357-bbb7-8d391325d63e] , this is ready to be tested now on SIT
+
+Regards
+
+Silvia","10/Jul/25 10:13 AM;712020:8bd42e27-1143-4597-b696-660035556b07;[~accountid:70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454] , [~accountid:712020:69a0b8ec-35c4-449f-bcf2-37d30e6815d7] , could you please amend the description of this Jira so we follow same behaviour as in Vehicles? We don’t redirect to vehicle details if there is only one result.
+
+*A bug was raised because this was not happening, I guess this is the line that needs to be modified* 
+
+* _“If one garage matches the search criteria, the details of the garage are displayed on the next screen.”_ 
+
+There is another thing that probably needs to be changed on this story:
+
+* *The step on that scenario should say* *_“I enter two or more valid search criteria_**” as the minimum criteria is 2 for this advance search screen*
+
+!image-20250710-091248.png|width=625,height=313,alt=""image-20250710-091248.png""!
+
+Thanks
+
+Silvia","10/Jul/25 10:56 AM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;[~accountid:712020:8bd42e27-1143-4597-b696-660035556b07] 
+
+I’ve updated the acceptance criteria to enter two or more search criteria. 
+
+Regarding the other point - if we only have one result for vehicles, we still display the search results screen, but with only one search result, right? If you can confirm that is the case, I can update the wording of this user story to ensure that it behaves in a consistent fashion. ","10/Jul/25 11:08 AM;712020:8bd42e27-1143-4597-b696-660035556b07;[~accountid:70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454] confirmed. With only one result we still show the list of vehicles with that unique result
+
+!image-20250710-100850.png|width=1518,height=358,alt=""image-20250710-100850.png""!","10/Jul/25 11:22 AM;70121:33f42efe-9a0a-4def-9b9f-a39fe5caf454;[~accountid:712020:8bd42e27-1143-4597-b696-660035556b07] 
+
+User story has been updated to reflect the same approach we implemented for vehicles. ",18405,MCR-23,Garage,Done,11/Jul/25 12:51 PM
