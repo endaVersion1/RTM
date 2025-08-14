@@ -1,9 +1,8 @@
 --Jira--
-enda.brody@version1.com
+{{JIRA USER EMAIL}}
 
-ATATT3xFfGF0VNgR8AqwYgkw7ZhR9MDORDOYOk5cR5kaxoWQLK5S5DCRzhHaaKG3bhll1teCKGqEVz5lnbK0xMNgpfph7oqmf_TPPD2KWkZBRleImS8zjWK_a_hlbqXlp6_fEoRZ550Ur4xqdHVEjBxKz_sU2kek8eLdLbeHqTeqeZvMo65Px8k=73519F8D
+{{jiraToken}}
 project = MCR AND type = Story AND status = "QA Finished" ORDER BY cf[10020] DESC, created DESC
 
 --Test Rail---
-enda.brody@version1.com
-PR70VOvC5UpzDXP3CPrA-L8.ZAmy1rnNvARr8QHdK
+tEST RiAL EMAIL AND {{ACCESStOKEN}}
